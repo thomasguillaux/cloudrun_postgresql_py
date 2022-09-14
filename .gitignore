@@ -1,0 +1,4 @@
+__pycache__
+.pytest_cache
+.gcp_credentials.json
+.cloud_sql_proxy
