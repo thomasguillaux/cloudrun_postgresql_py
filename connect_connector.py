@@ -7,10 +7,10 @@ from google.cloud.sql.connector import Connector, IPTypes
 
 def connect_with_connector() -> sqlalchemy.engine.base.Engine:
 
-    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]  # e.g. 'project:region:instance'
-    db_user = os.environ["DB_USER"]  # e.g. 'my-db-user'
-    db_pass = os.environ["DB_PASS"]  # e.g. 'my-db-password'
-    db_name = os.environ["DB_NAME"]  # e.g. 'my-database'
+    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]  
+    db_user = os.environ["DB_USER"]  
+    db_pass = os.environ["DB_PASS"]  
+    db_name = os.environ["DB_NAME"]  
 
     ip_type = IPTypes.PRIVATE if os.environ.get("PRIVATE_IP") else IPTypes.PUBLIC
 
