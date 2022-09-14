@@ -7,9 +7,9 @@ from google.cloud.sql.connector import Connector, IPTypes
 
 def connect_with_connector_auto_iam_authn() -> sqlalchemy.engine.base.Engine:
 
-    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]  # e.g. 'project:region:instance'
-    db_iam_user = os.environ["DB_IAM_USER"]  # e.g. 'sa-name@project-id.iam'
-    db_name = os.environ["DB_NAME"]  # e.g. 'my-database'
+    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]  
+    db_iam_user = os.environ["DB_IAM_USER"]  
+    db_name = os.environ["DB_NAME"]  
 
     ip_type = IPTypes.PRIVATE if os.environ.get("PRIVATE_IP") else IPTypes.PUBLIC
 
@@ -30,13 +30,9 @@ def connect_with_connector_auto_iam_authn() -> sqlalchemy.engine.base.Engine:
     pool = sqlalchemy.create_engine(
         "postgresql+pg8000://",
         creator=getconn,
-
         pool_size=5,
-
         max_overflow=2,
-
         pool_timeout=30,  # 30 seconds
-
         pool_recycle=1800,  # 30 minutes
     )
     return pool
